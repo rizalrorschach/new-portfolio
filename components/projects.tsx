@@ -20,7 +20,7 @@ export default function Projects() {
     {
       title: "Expo Event Website",
       description: "A dynamic website for a educational exhibition event featuring schedule management, speaker profiles, and ticket registration.",
-      tags: ["React", "Node.js", "Express", "MongoDB"],
+      tags: ["Next.js", "Tailwind CSS", "Framer Motion", "TypeScript"],
       image: "/expo.png?height=200&width=400",
       github: "https://github.com/rizalrorschach/twb-expo",
       demo: "https://www.twbexpo.my.id/",
@@ -129,7 +129,7 @@ export default function Projects() {
               </CardHeader>
               <CardContent className="flex-grow">
                 <div className="flex flex-wrap gap-2">
-                  {["Mystery", "Innovation", "Creativity"].map((tag) => (
+                  {["React.js", "Express.js", "PostgreSQL", "REST API"].map((tag) => (
                     <motion.span key={tag} className="px-2 py-1 bg-muted text-xs rounded-md" whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
                       {tag}
                     </motion.span>
