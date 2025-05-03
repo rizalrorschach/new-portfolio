@@ -1,6 +1,5 @@
 import AboutMe from "@/components/about-me";
 import FloatingNavbar from "@/components/floating-navbar";
-import Footer from "@/components/footer";
 import Projects from "@/components/projects";
 import Skills from "@/components/skills";
 
@@ -13,7 +12,6 @@ export default function Home() {
         <Skills />
         <Projects />
       </main>
-      <Footer />
     </div>
   );
 }

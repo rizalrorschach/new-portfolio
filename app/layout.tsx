@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "Rizal Rorschach - Portfolio",
@@ -17,6 +18,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-background">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
