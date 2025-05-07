@@ -61,11 +61,11 @@ export default function Projects() {
             >
               <div className="relative overflow-hidden bg-transparent p-[1px] rounded-xl">
                 <div className="absolute inset-0">
-                  <MovingBorder duration={7000} rx="30%" ry="30%">
+                  <MovingBorder duration={7000} rx="0.75rem" ry="0.75rem">
                     <div className="h-20 w-20 bg-[radial-gradient(#0ea5e9_40%,transparent_60%)] opacity-[0.8]" />
                   </MovingBorder>
                 </div>
-                <Card className="relative overflow-hidden flex flex-col h-full bg-background/80 backdrop-blur-xl">
+                <Card className="relative overflow-hidden flex flex-col h-full bg-background/80 backdrop-blur-xl rounded-xl">
                   <div className="relative h-48 w-full overflow-hidden">
                     <Image src={project.image || "/placeholder.svg"} alt={project.title} fill className="object-cover" />
                   </div>
@@ -116,11 +116,11 @@ export default function Projects() {
           >
             <div className="relative overflow-hidden bg-transparent p-[1px] rounded-xl">
               <div className="absolute inset-0">
-                <MovingBorder duration={7000} rx="30%" ry="30%">
+                <MovingBorder duration={7000} rx="0.75rem" ry="0.75rem">
                   <div className="h-20 w-20 bg-[radial-gradient(#0ea5e9_40%,transparent_60%)] opacity-[0.8]" />
                 </MovingBorder>
               </div>
-              <Card className="relative overflow-hidden flex flex-col h-full bg-background/80 backdrop-blur-xl border-dashed border-2">
+              <Card className="relative overflow-hidden flex flex-col h-full bg-background/80 backdrop-blur-xl border-dashed border-2 rounded-xl">
                 <div className="relative h-48 w-full overflow-hidden bg-muted/30 flex items-center justify-center">
                   <motion.div
                     animate={{
