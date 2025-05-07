@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import AnimatedSection from "./animated-section";
 import { motion } from "framer-motion";
+import { MovingBorder } from "./moving-border";
 
 export default function Skills() {
   const skillsData = [
@@ -54,22 +55,29 @@ export default function Skills() {
         <div className="grid md:grid-cols-3 gap-6">
           {skillsData.map((category, categoryIndex) => (
             <motion.div key={category.category} custom={categoryIndex} initial="hidden" animate="visible" variants={cardVariants} className="h-full">
-              <Card className="h-full">
-                <CardHeader>
-                  <CardTitle>{category.category}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {category.skills.map((skill, skillIndex) => (
-                      <motion.div key={skill} custom={skillIndex} initial="hidden" animate="visible" variants={badgeVariants} whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
-                        <Badge variant="secondary" className="bg-background/20 hover:bg-background/30">
-                          {skill}
-                        </Badge>
-                      </motion.div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+              <div className="relative h-full overflow-hidden bg-transparent p-[1px] rounded-xl">
+                <div className="absolute inset-0">
+                  <MovingBorder duration={7000} rx="30%" ry="30%">
+                    <div className="h-20 w-20 bg-[radial-gradient(#0ea5e9_40%,transparent_60%)] opacity-[0.8]" />
+                  </MovingBorder>
+                </div>
+                <Card className="relative h-full bg-background/80 backdrop-blur-xl">
+                  <CardHeader>
+                    <CardTitle>{category.category}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex flex-wrap gap-2">
+                      {category.skills.map((skill, skillIndex) => (
+                        <motion.div key={skill} custom={skillIndex} initial="hidden" animate="visible" variants={badgeVariants} whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
+                          <Badge variant="secondary" className="bg-background/20 hover:bg-background/30">
+                            {skill}
+                          </Badge>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
             </motion.div>
           ))}
         </div>
