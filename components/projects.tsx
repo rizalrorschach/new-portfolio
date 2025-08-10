@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { ExternalLink, Github } from "lucide-react";
 import AnimatedSection from "./animated-section";
 import { motion } from "framer-motion";
@@ -11,20 +12,28 @@ import { MovingBorder } from "./moving-border";
 export default function Projects() {
   const projects = [
     {
-      title: "Personal Portfolio Website",
-      description: "A responsive portfolio website showcasing skills, projects, and professional journey with dark/light mode and smooth animations.",
-      tags: ["Next.js", "Tailwind CSS", "Framer Motion", "TypeScript"],
-      image: "/portfolio.png?height=200&width=400",
-      github: "https://github.com/rizalrorschach/portfolio-restu",
-      demo: "https://www.restu.my.id/",
+      title: "ChessMaster Academy",
+      description: "A full-stack, subscription-based SaaS platform for chess players. Features an interactive PGN-based learning interface, secure payment processing with Stripe, and a complete user management system with Supabase.",
+      tags: ["Next.js", "Tailwind CSS", "Supabase", "Stripe", "TypeScript"],
+      image: "/chess.png?height=200&width=400",
+      github: "https://github.com/rizalrorschach/pawnhub",
+      demo: "https://chess.rizalize.com/",
     },
     {
-      title: "Expo Event Website",
-      description: "A dynamic website for a educational exhibition event featuring schedule management, speaker profiles, and ticket registration.",
-      tags: ["Next.js", "Tailwind CSS", "Framer Motion", "TypeScript"],
-      image: "/expo.png?height=200&width=400",
-      github: "https://github.com/rizalrorschach/twb-expo",
-      demo: "https://www.twbexpo.my.id/",
+      title: "Verona E-Commerce Platform",
+      description: "A responsive e-commerce storefront for a local business, featuring a product catalog, shopping cart, and a unique WhatsApp-based checkout system for streamlined order processing. Includes a full CRUD admin dashboard.",
+      tags: ["Next.js", "Tailwind CSS", "Supabase", "TypeScript", "Cloudinary"],
+      image: "/verona.png?height=200&width=400",
+      github: "https://github.com/rizalrorschach/verona",
+      demo: "https://verona.rizalize.com/",
+    },
+    {
+      title: "ClipRoom: Real-Time Clipboard Sharing",
+      description: "A real-time utility for instant, cross-device clipboard sharing using Supabase Realtime Channels. Features drag-and-drop image transfers and ephemeral rooms that are auto-deleted after 24 hours for privacy.",
+      tags: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS", "Realtime"],
+      image: "/cliproom.png?height=200&width=400",
+      github: "https://github.com/rizalrorschach/clip-room",
+      demo: "https://clip.rizalize.com/",
     },
   ];
 
@@ -46,7 +55,7 @@ export default function Projects() {
         <motion.h2 className="text-3xl font-bold mb-10 text-center" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }}>
           Projects
         </motion.h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
           {projects.map((project, index) => (
             <motion.div
               key={index}
@@ -58,8 +67,9 @@ export default function Projects() {
                 y: -10,
                 transition: { duration: 0.3 },
               }}
+              className="h-full"
             >
-              <div className="relative overflow-hidden bg-transparent p-[1px] rounded-xl">
+              <div className="relative overflow-hidden bg-transparent p-[1px] rounded-xl h-full">
                 <div className="absolute inset-0">
                   <MovingBorder duration={7000} rx="0.75rem" ry="0.75rem">
                     <div className="h-20 w-20 bg-[radial-gradient(#0ea5e9_40%,transparent_60%)] opacity-[0.8]" />
@@ -69,12 +79,12 @@ export default function Projects() {
                   <div className="relative h-48 w-full overflow-hidden">
                     <Image src={project.image || "/placeholder.svg"} alt={project.title} fill className="object-cover" />
                   </div>
-                  <CardHeader>
-                    <CardTitle>{project.title}</CardTitle>
-                    <CardDescription>{project.description}</CardDescription>
+                  <CardHeader className="flex-shrink-0">
+                    <CardTitle className="line-clamp-2">{project.title}</CardTitle>
+                    <CardDescription className="line-clamp-3">{project.description}</CardDescription>
                   </CardHeader>
-                  <CardContent className="flex-grow">
-                    <div className="flex flex-wrap gap-2">
+                  <CardContent className="flex-1 flex flex-col justify-between">
+                    <div className="flex flex-wrap gap-2 mb-4">
                       {project.tags.map((tag) => (
                         <motion.span key={tag} className="px-2 py-1 bg-muted text-xs rounded-md" whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
                           {tag}
@@ -82,15 +92,33 @@ export default function Projects() {
                       ))}
                     </div>
                   </CardContent>
-                  <CardFooter className="flex gap-2">
-                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                      <Button variant="outline" size="sm" asChild>
-                        <a href={project.github} target="_blank" rel="noopener noreferrer">
-                          <Github className="h-4 w-4 mr-2" />
-                          Code
-                        </a>
-                      </Button>
-                    </motion.div>
+                  <CardFooter className="flex gap-2 flex-shrink-0">
+                    {project.title === "ChessMaster Academy" || project.title === "Verona E-Commerce Platform" ? (
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                              <Button variant="outline" size="sm" disabled>
+                                <Github className="h-4 w-4 mr-2" />
+                                Code (Private)
+                              </Button>
+                            </motion.div>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>Enterprise Platform - Code Restricted</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                    ) : (
+                      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                        <Button variant="outline" size="sm" asChild>
+                          <a href={project.github} target="_blank" rel="noopener noreferrer">
+                            <Github className="h-4 w-4 mr-2" />
+                            Code
+                          </a>
+                        </Button>
+                      </motion.div>
+                    )}
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                       <Button size="sm" asChild>
                         <a href={project.demo} target="_blank" rel="noopener noreferrer">
@@ -104,60 +132,6 @@ export default function Projects() {
               </div>
             </motion.div>
           ))}
-          <motion.div
-            custom={2}
-            initial="hidden"
-            animate="visible"
-            variants={cardVariants}
-            whileHover={{
-              y: -10,
-              transition: { duration: 0.3 },
-            }}
-          >
-            <div className="relative overflow-hidden bg-transparent p-[1px] rounded-xl">
-              <div className="absolute inset-0">
-                <MovingBorder duration={7000} rx="0.75rem" ry="0.75rem">
-                  <div className="h-20 w-20 bg-[radial-gradient(#0ea5e9_40%,transparent_60%)] opacity-[0.8]" />
-                </MovingBorder>
-              </div>
-              <Card className="relative overflow-hidden flex flex-col h-full bg-background/80 backdrop-blur-xl border-dashed border-2 rounded-xl">
-                <div className="relative h-48 w-full overflow-hidden bg-muted/30 flex items-center justify-center">
-                  <motion.div
-                    animate={{
-                      scale: [1, 1.05, 1],
-                      opacity: [0.7, 1, 0.7],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Number.POSITIVE_INFINITY,
-                      repeatType: "reverse",
-                    }}
-                    className="text-4xl font-bold text-muted-foreground/50"
-                  >
-                    Coming Soon
-                  </motion.div>
-                </div>
-                <CardHeader>
-                  <CardTitle>Wedding Invitation</CardTitle>
-                  <CardDescription>A modern wedding invitation website featuring personalized guest experiences, elegant templates, and advanced web technologies for a seamless celebration.</CardDescription>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                  <div className="flex flex-wrap gap-2">
-                    {["React.js", "Express.js", "PostgreSQL", "REST API"].map((tag) => (
-                      <motion.span key={tag} className="px-2 py-1 bg-muted text-xs rounded-md" whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
-                        {tag}
-                      </motion.span>
-                    ))}
-                  </div>
-                </CardContent>
-                <CardFooter className="flex gap-2 opacity-50">
-                  <Button variant="outline" size="sm" disabled>
-                    In Progress
-                  </Button>
-                </CardFooter>
-              </Card>
-            </div>
-          </motion.div>
         </div>
       </AnimatedSection>
     </section>

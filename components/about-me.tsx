@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Download } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import AnimatedSection from "./animated-section";
 
 export default function AboutMe() {
@@ -25,9 +27,31 @@ export default function AboutMe() {
           </motion.h2>
           <div className="space-y-4">
             <motion.p custom={1} initial="hidden" animate="visible" variants={paragraphVariants}>
-              I&#39;m Aji Syamsul Rizal, a web developer specializing in modern front-end technologies like React.js, Next.js, and Tailwind CSS, with backend experience using Node.js and Express.js. With over four years of experience
-              through personal projects and freelance work, I&#39;m passionate about blockchain technology and actively exploring the world of web3 development.
+            I&#39;m Aji Syamsul Rizal, a product-minded web developer focused on building full-stack applications with React, Next.js, and Laravel. I specialize in creating intuitive user interfaces and robust backend systems that solve real-world problems. My goal is to translate complex business requirements into clean, scalable, and efficient code. I am currently exploring emerging technologies and am actively seeking a full-stack or front-end developer role.
             </motion.p>
+            <motion.div 
+              custom={2} 
+              initial="hidden" 
+              animate="visible" 
+              variants={paragraphVariants}
+              className="flex justify-center pt-4"
+            >
+              <Button 
+                asChild 
+                size="lg"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground mt-5"
+              >
+                <a 
+                  href="/AjiSyamsulRizal-CV-2025.pdf" 
+                  download="AjiSyamsulRizal-CV-2025.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Download className="h-5 w-5 mr-2" />
+                  Download CV
+                </a>
+              </Button>
+            </motion.div>
           </div>
         </div>
       </AnimatedSection>

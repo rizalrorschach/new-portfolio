@@ -14,11 +14,11 @@ export default function Skills() {
     },
     {
       category: "Backend",
-      skills: ["Node.js", "Express", "PostgreSQL", "REST API"],
+      skills: ["Next.js API Routes", "Node.js", "Express", "PostgreSQL", "REST API"],
     },
     {
       category: "Tools & Others",
-      skills: ["Git", "GitHub", "VS Code", "Figma", "Postman", "Docker"],
+      skills: ["Git", "GitHub", "VS Code", "Figma", "Postman", "Docker", "Stripe"],
     },
   ];
 
