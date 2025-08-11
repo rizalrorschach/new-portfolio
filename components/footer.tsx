@@ -46,7 +46,7 @@ export default function Footer() {
             </motion.div>
           </div>
           <motion.p variants={itemVariants} className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Aji Syam Rizal. All rights reserved.
+            © {new Date().getFullYear()} Aji Syamsul Rizal. All rights reserved.
           </motion.p>
         </motion.div>
       </div>

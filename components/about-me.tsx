@@ -22,7 +22,7 @@ export default function AboutMe() {
     <section id="about" className="py-20">
       <AnimatedSection>
         <div className="max-w-3xl mx-auto">
-          <motion.h2 className="text-3xl font-bold mb-6 text-center" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }}>
+          <motion.h2 className="text-3xl font-bold mb-6 text-left md:text-center" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }}>
             Hello There
           </motion.h2>
           <div className="space-y-4">
@@ -34,12 +34,12 @@ export default function AboutMe() {
               initial="hidden" 
               animate="visible" 
               variants={paragraphVariants}
-              className="flex justify-center pt-4"
+              className="flex justify-start md:justify-center pt-4"
             >
               <Button 
                 asChild 
                 size="lg"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground mt-5"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground mt-3"
               >
                 <a 
                   href="/AjiSyamsulRizal-CV-2025.pdf" 
