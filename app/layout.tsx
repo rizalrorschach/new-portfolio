@@ -4,7 +4,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "Rizal Rorschach - Portfolio",
+  title: "Aji Syam - Portfolio",
   description: "A simple portfolio website showcasing my skills and projects",
 };
 
